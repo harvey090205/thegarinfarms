@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GarinFarm -  Experience</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: radial-gradient(circle at 20% 30%, #e6f0e6, #b8d9b8);
+            perspective: 1200px;
+            overflow-x: hidden;
+        }
+
+        /* 3D / 4D layer effects */
+        header, nav, .sidebar, main, footer {
+            transform-style: preserve-3d;
+            box-shadow: 0 15px 25px -5px rgba(0, 40, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(2px);
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e4a1e, #2e7d32, #1b5e20);
+            color: white;
+            padding: 22px;
+            text-align: center;
+            transform: translateZ(20px) rotateX(2deg);
+            border-bottom: 3px solid #ffd966;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.4);
+            letter-spacing: 1px;
+            animation: headerFloat 6s infinite alternate ease-in-out;
+        }
+
+        @keyframes headerFloat {
+            0% { transform: translateZ(20px) rotateX(2deg) translateY(0); }
+            100% { transform: translateZ(20px) rotateX(2deg) translateY(-3px); }
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            text-shadow: 3px 3px 0 #0f2b0f, 6px 6px 12px rgba(0,0,0,0.5);
+            letter-spacing: 3px;
+        }
+
+        nav {
+            background: #1b5e20;
+            display: flex;
+            justify-content: center;
+            padding: 12px;
+            transform: translateZ(15px);
+            box-shadow: 0 12px 18px -10px #0f2b0f;
+            border-bottom: 1px solid #8bc34a;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 24px;
+            font-weight: bold;
+            border-radius: 30px;
+            margin: 0 6px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            transition: all 0.2s ease;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            transform: translateZ(5px);
+        }
+
+        nav a:hover {
+            background-color: #4caf50;
+            transform: translateZ(15px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4), 0 0 15px #a5d6a7;
+            border-radius: 5px;
+            color: #fffacd;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            max-width: 1200px;
+            margin: 30px auto;
+            width: 95%;
+            gap: 25px;
+            transform-style: preserve-3d;
+            perspective: 1500px;
+        }
+
+        .sidebar {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 25px 20px;
+            border-radius: 20px;
+            box-shadow: 0 25px 35px -12px rgba(0, 40, 0, 0.6), 0 0 0 1px rgba(255,255,255,0.5) inset;
+            height: fit-content;
+            transform: rotateY(3deg) translateZ(10px) translateX(5px);
+            border-left: 6px solid #2e7d32;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .sidebar:hover {
+            transform: rotateY(0deg) translateZ(25px) translateX(5px);
+            box-shadow: 0 35px 45px -10px #1b5e20, 0 0 0 2px #a5d6a7 inset;
+        }
+
+        .sidebar h3 {
+            color: #1b5e20;
+            font-size: 1.8rem;
+            text-shadow: 1px 1px 0 #fff, 2px 2px 4px rgba(0,0,0,0.2);
+            border-bottom: 2px dashed #2e7d32;
+            padding-bottom: 10px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .sidebar li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(46, 125, 50, 0.2);
+            transform: translateZ(10px);
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #1e3a1e;
+            display: block;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 5px 10px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            background: rgba(255,255,255,0.3);
+            transform: translateX(0);
+        }
+
+        .sidebar a:hover {
+            color: #fff;
+            background: #2e7d32;
+            font-weight: bold;
+            transform: translateX(10px) scale(1.02);
+            box-shadow: -5px 5px 15px rgba(0, 80, 0, 0.5);
+            letter-spacing: 1px;
+        }
+
+        main {
+            flex: 3;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(6px);
+            padding: 35px;
+            border-radius: 28px;
+            box-shadow: 0 30px 40px -15px #1f4a1f, 0 0 0 1px rgba(200, 230, 200, 0.8) inset;
+            text-align: center;
+            transform: rotateY(-2deg) rotateX(1deg) translateZ(15px);
+            transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.2), box-shadow 0.4s;
+            border: 1px solid #a5d6a7;
+        }
+
+        main:hover {
+            transform: rotateY(0deg) rotateX(0deg) translateZ(30px) scale(1.01);
+            box-shadow: 0 45px 55px -20px #0a2e0a, 0 0 0 2px #8bc34a inset;
+        }
+
+        main h2 {
+            font-size: 2.5rem;
+            color: #1b5e20;
+            text-shadow: 2px 2px 0 #c8e6c9, 4px 4px 8px rgba(0,0,0,0.2);
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            transform: translateZ(20px);
+        }
+
+        /* --- UPDATED 4D IMAGE STYLES --- */
+        .main-image {
+            width: 100%;
+            max-width: 550px;
+            height: auto;
+            object-fit: cover; /* Ensures the image fills the rounded shape nicely */
+            border-radius: 20px; /* Changed from 50% (circle) to 20px (rounded rectangle) */
+            margin: 25px auto;
+            display: block;
+            border: 8px solid #ffd966;
+            box-shadow: 0 30px 30px -10px rgba(0,0,0,0.7), 0 0 0 5px #2e7d32 inset, 0 0 30px #b9f6ca;
+            transform: translateZ(35px) rotateY(5deg);
+            animation: pulseImage 4s infinite alternate;
+            transition: all 0.4s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-image:hover {
+            transform: translateZ(60px) rotateY(12deg) scale(1.02);
+            box-shadow: 0 40px 40px -10px black, 0 0 0 8px #f9f9b0 inset, 0 0 60px #fff59d;
+            border-color: #fff176;
+        }
+
+        @keyframes pulseImage {
+            0% { box-shadow: 0 25px 30px -10px #0f2b0f, 0 0 0 5px #2e7d32 inset, 0 0 20px #a5d6a7; }
+            100% { box-shadow: 0 35px 40px -5px #1b5e20, 0 0 0 5px #558b2f inset, 0 0 45px #ccff90; }
+        }
+
+        /* Shimmer Effect Overlay */
+        .image-wrapper {
+            position: relative;
+            display: inline-block;
+            margin: 25px auto;
+            transform-style: preserve-3d;
+            width: 100%;
+            max-width: 550px;
+        }
+        
+        .image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -60%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 200, 0.25), transparent 70%);
+            transform: rotate(25deg);
+            animation: shimmer 6s infinite;
+            pointer-events: none;
+            border-radius: 20px;
+        }
+
+        @keyframes shimmer {
+            0% { opacity: 0.2; transform: translateX(-30%) rotate(25deg); }
+            50% { opacity: 0.6; transform: translateX(30%) rotate(25deg); }
+            100% { opacity: 0.2; transform: translateX(-30%) rotate(25deg); }
+        }
+
+        main p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #1e3a1e;
+            background: rgba(230, 245, 230, 0.8);
+            padding: 20px;
+            border-radius: 20px;
+            margin-top: 20px;
+            text-shadow: 1px 1px 0 white;
+            box-shadow: 0 15px 20px -12px #2e7d32, 0 0 0 1px #c8e6c9 inset;
+            transform: translateZ(18px);
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        main p:hover {
+            transform: translateZ(30px) scale(1.01);
+            background: rgba(240, 255, 240, 0.95);
+        }
+
+        footer {
+            background: linear-gradient(145deg, #1a2e1a, #2b3e2b);
+            color: #e0e0e0;
+            text-align: center;
+            padding: 18px;
+            margin-top: 30px;
+            transform: translateZ(10px) rotateX(1deg);
+            box-shadow: 0 -15px 25px -10px #0f1f0f;
+            border-top: 4px solid #558b2f;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px black;
+            transition: all 0.3s;
+        }
+
+        footer:hover {
+            transform: translateZ(20px) rotateX(0deg);
+            background: linear-gradient(145deg, #1e3a1e, #2e5e2e);
+            color: #f0f7f0;
+            border-top-color: #aed581;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                perspective: none;
+            }
+            .sidebar, main {
+                transform: none !important;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            .main-image {
+                height: 220px;
+            }
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 30% 40%, rgba(150, 230, 150, 0.2), transparent 70%);
+            pointer-events: none;
+            z-index: 9999;
+            animation: ambient 12s infinite alternate;
+        }
+
+        @keyframes ambient {
+            0% { opacity: 0.4; transform: scale(1); }
+            100% { opacity: 0.9; transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🌾 GarinFarm 🌾</h1>
+    </header>
+    <nav>
+        <a href="index1.html">Home</a>
+        <a href="profile1.html">Profile</a>
+        <a href="gallery1.html">Gallery</a>
+        <a href="about1.html">About</a>
+            </nav>
+    <div class="container">
+        <aside class="sidebar">
+            <h3>⚡ Quick Links</h3>
+            <ul>
+                <li><a href="index1.html">Home</a></li>
+                <li><a href="profile1.html">Profile</a></li>
+                <li><a href="gallery1.html">Gallery</a></li>
+                <li><a href="about1.html">About</a></li>
+                            </ul>
+        </aside>
+        <main>
+            <h2>Welcome to GarinFarm</h2>
+            
+            <!-- Image Wrapper for Shimmer Effect -->
+            <div class="image-wrapper">
+                <img src="main.jpg" alt="GarinFarm Pilgrimage Entrance" class="main-image" title="Journey to Heaven – 4D experience">
+            </div>
+            
+            <p>Located in San Joaquin, Iloilo, GarinFarm is a 14-hectare inland resort offering a unique blend of leisure, spirituality, and agriculture. Experience our famous "Journey to Heaven" and enjoy the serene countryside.</p>
+        </main>
+    </div>
+    <footer>
+        <p>© 2026 GarinFarm, San Joaquin, Iloilo. All rights reserved. <span style="opacity:0.7;">✨ immersive experience ✨</span></p>
+    </footer>
+</body>
+</html>

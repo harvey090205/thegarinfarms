@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GarinFarm · About · 4D</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            transition: all 0.25s ease;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: radial-gradient(circle at 15% 20%, #e3f2e3, #b8d9b8, #9fc79f);
+            perspective: 1500px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient floating glow (4D atmosphere) */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at 75% 25%, rgba(190, 245, 190, 0.3), transparent 65%),
+                        radial-gradient(circle at 25% 85%, rgba(255, 255, 200, 0.18), transparent 70%);
+            pointer-events: none;
+            z-index: 1000;
+            animation: ambientPulse 13s infinite alternate ease-in-out;
+        }
+
+        @keyframes ambientPulse {
+            0% { opacity: 0.5; transform: scale(1); }
+            100% { opacity: 0.95; transform: scale(1.08); }
+        }
+
+        /* 3D / 4D base layers */
+        header, nav, .sidebar, main, footer {
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            box-shadow: 0 22px 32px -14px rgba(0, 40, 0, 0.5), 0 6px 14px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ---------- HEADER 4D ---------- */
+        header {
+            background: linear-gradient(130deg, #1b4a1b, #2e7d32, #1f5e1f);
+            color: white;
+            padding: 26px 20px;
+            text-align: center;
+            transform: translateZ(28px) rotateX(2.5deg);
+            border-bottom: 4px solid #ffd966;
+            text-shadow: 0 5px 14px black;
+            animation: headerLift 7s infinite alternate ease-in-out;
+            border-radius: 0 0 45px 45px;
+        }
+
+        @keyframes headerLift {
+            0% { transform: translateZ(28px) rotateX(2.5deg) translateY(0); }
+            100% { transform: translateZ(28px) rotateX(2.5deg) translateY(-5px); }
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: 6px;
+            text-shadow: 4px 4px 0 #0a2a0a, 8px 8px 18px rgba(0, 0, 0, 0.6);
+            transform: translateZ(18px);
+        }
+
+        /* ---------- NAV 4D ---------- */
+        nav {
+            background: #1b5e20;
+            display: flex;
+            justify-content: center;
+            padding: 12px 10px;
+            flex-wrap: wrap;
+            transform: translateZ(22px);
+            box-shadow: 0 18px 24px -14px #0d2b0d, 0 0 0 1px #6a9e6a inset;
+            border-bottom: 1px solid #8bc34a;
+            gap: 6px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 26px;
+            font-weight: bold;
+            border-radius: 40px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(4px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+            transform: translateZ(6px);
+            letter-spacing: 0.5px;
+            transition: all 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+        }
+
+        nav a:hover {
+            background-color: #4caf50;
+            transform: translateZ(32px) scale(1.07);
+            box-shadow: 0 20px 30px -8px #0f2b0f, 0 0 22px #b9f6ca, 0 0 0 2px #ffffb3 inset;
+            color: #fffacd;
+            border-radius: 12px;
+        }
+
+        /* ---------- CONTAINER 4D ---------- */
+        .container {
+            display: flex;
+            flex: 1;
+            max-width: 1200px;
+            margin: 30px auto;
+            width: 95%;
+            gap: 25px;
+            transform-style: preserve-3d;
+            perspective: 1600px;
+        }
+
+        /* ---------- SIDEBAR 4D ---------- */
+        .sidebar {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 22px 20px;
+            border-radius: 24px;
+            box-shadow: 0 30px 42px -16px #1f4a1f, 0 0 0 2px #c8e6c9 inset, 0 0 0 1px rgba(255, 255, 255, 0.7);
+            height: fit-content;
+            transform: rotateY(4deg) translateZ(20px) translateX(6px);
+            border-left: 8px solid #2e7d32;
+            transition: transform 0.4s ease, box-shadow 0.4s;
+        }
+
+        .sidebar:hover {
+            transform: rotateY(0deg) translateZ(42px) translateX(6px);
+            box-shadow: 0 48px 58px -18px #1b5e20, 0 0 0 3px #a5d6a7 inset;
+        }
+
+        .sidebar h3 {
+            color: #1b5e20;
+            font-size: 1.9rem;
+            text-shadow: 2px 2px 0 #fff, 4px 4px 8px rgba(0, 0, 0, 0.2);
+            border-bottom: 3px dashed #2e7d32;
+            padding-bottom: 12px;
+            transform: translateZ(16px);
+        }
+
+        .sidebar ul {
+            list-style: none;
+            margin-top: 14px;
+            transform-style: preserve-3d;
+        }
+
+        .sidebar li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(46, 125, 50, 0.25);
+            transform: translateZ(10px);
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #1e3a1e;
+            display: block;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 8px 12px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.4);
+            transition: all 0.2s;
+            transform: translateX(0);
+        }
+
+        .sidebar a:hover {
+            color: #fff;
+            background: #2e7d32;
+            font-weight: bold;
+            transform: translateX(12px) scale(1.02);
+            box-shadow: -8px 8px 18px rgba(0, 60, 0, 0.5), 0 0 0 1px #e6ffe6 inset;
+            letter-spacing: 0.8px;
+        }
+
+        /* ---------- MAIN 4D ---------- */
+        main {
+            flex: 3;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(8px);
+            padding: 35px 32px;
+            border-radius: 28px;
+            box-shadow: 0 38px 55px -20px #1f4a1f, 0 0 0 2px #c8e6c9 inset, 0 0 0 1px rgba(255, 255, 255, 0.8);
+            transform: rotateY(-3deg) rotateX(1deg) translateZ(22px);
+            transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.2), box-shadow 0.5s;
+            border: 1px solid #a5d6a7;
+        }
+
+        main:hover {
+            transform: rotateY(0deg) rotateX(0deg) translateZ(45px) scale(1.01);
+            box-shadow: 0 60px 75px -24px #0a2e0a, 0 0 0 3px #8bc34a inset;
+        }
+
+        main h2 {
+            font-size: 2.8rem;
+            color: #1b5e20;
+            text-shadow: 3px 3px 0 #c8e6c9, 6px 6px 14px rgba(0, 0, 0, 0.15);
+            margin-bottom: 18px;
+            transform: translateZ(22px);
+            letter-spacing: 1px;
+        }
+
+        main h3 {
+            font-size: 1.8rem;
+            color: #2e7d32;
+            margin: 30px 0 12px;
+            border-bottom: 3px solid #a5d6a7;
+            padding-bottom: 8px;
+            text-shadow: 1px 1px 0 white, 2px 2px 6px rgba(0, 0, 0, 0.1);
+            transform: translateZ(18px);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        main h3:hover {
+            transform: translateZ(28px);
+            border-bottom-color: #2e7d32;
+            color: #1b5e20;
+        }
+
+        main p {
+            font-size: 1.12rem;
+            line-height: 1.75;
+            color: #1e3a1e;
+            background: rgba(235, 250, 235, 0.7);
+            padding: 16px 22px;
+            border-radius: 20px;
+            box-shadow: 0 12px 20px -14px #1b5e20, 0 0 0 1px #d0e8d0 inset;
+            transform: translateZ(14px);
+            transition: transform 0.3s, background 0.3s;
+            margin-bottom: 16px;
+        }
+
+        main p:hover {
+            transform: translateZ(28px) scale(1.01);
+            background: rgba(245, 255, 245, 0.95);
+        }
+
+        main ul {
+            list-style: none;
+            margin-top: 12px;
+            transform-style: preserve-3d;
+        }
+
+        main li {
+            background: rgba(245, 255, 245, 0.7);
+            padding: 14px 20px;
+            margin-bottom: 12px;
+            border-radius: 18px;
+            box-shadow: 0 14px 22px -16px #1b5e20, 0 0 0 1px #d0e8d0 inset;
+            transform: translateZ(12px);
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+            font-size: 1.08rem;
+            line-height: 1.65;
+            color: #1e3a1e;
+            border-left: 6px solid #2e7d32;
+        }
+
+        main li:hover {
+            transform: translateZ(32px) translateX(8px) scale(1.01);
+            box-shadow: 0 26px 32px -14px #0f2b0f, 0 0 0 2px #a5d6a7 inset;
+            background: rgba(250, 255, 250, 0.95);
+            border-left-color: #ffd966;
+        }
+
+        main li strong {
+            color: #1b5e20;
+            text-shadow: 0 1px 0 white;
+            font-weight: 800;
+        }
+
+        /* ---------- FOOTER 4D ---------- */
+        footer {
+            background: linear-gradient(145deg, #1a2e1a, #2b3e2b);
+            color: #e0e0e0;
+            text-align: center;
+            padding: 22px;
+            margin-top: 30px;
+            transform: translateZ(20px) rotateX(1deg);
+            box-shadow: 0 -25px 35px -14px #0f1f0f, 0 0 0 1px #558b2f inset;
+            border-top: 5px solid #558b2f;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 6px black;
+            transition: all 0.3s;
+            border-radius: 30px 30px 0 0;
+        }
+
+        footer:hover {
+            transform: translateZ(38px) rotateX(0deg);
+            background: linear-gradient(145deg, #1e3a1e, #2e5e2e);
+            color: #f0f7f0;
+            border-top-color: #aed581;
+            box-shadow: 0 -35px 45px -12px #0a1f0a, 0 0 0 2px #8bc34a inset;
+        }
+
+        /* ---------- RESPONSIVE 4D adjustments ---------- */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                perspective: none;
+            }
+            .sidebar, main {
+                transform: none !important;
+            }
+            header h1 {
+                font-size: 2.2rem;
+                letter-spacing: 2px;
+            }
+            main h2 {
+                font-size: 2.1rem;
+            }
+            main h3 {
+                font-size: 1.5rem;
+            }
+            main li:hover {
+                transform: translateZ(12px) translateX(4px) scale(1.01);
+            }
+            .sidebar a:hover {
+                transform: translateX(6px) scale(1.01);
+            }
+        }
+
+        /* nav active effect */
+        nav a:active {
+            transform: translateZ(45px) scale(0.98);
+            background: #ffd966;
+            color: #1b5e20;
+        }
+
+        /* subtle 4D shimmer on main content */
+        @keyframes shimmerSweep {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        main::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 28px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 220, 0.12), transparent);
+            background-size: 200% 100%;
+            animation: shimmerSweep 12s infinite linear;
+            pointer-events: none;
+            opacity: 0.4;
+            z-index: 0;
+        }
+
+        /* ensure content stays above shimmer */
+        main > * {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🌾 GarinFarm🌾</h1>
+    </header>
+    <nav>
+        <a href="index1.html">Home</a>
+        <a href="profile1.html">Profile</a>
+        <a href="gallery1.html">Gallery</a>
+        <a href="about1.html">About</a>
+        
+    </nav>
+    <div class="container">
+        <aside class="sidebar">
+            <h3>⚡ Quick Links</h3>
+            <ul>
+                <li><a href="index1.html">Home</a></li>
+                <li><a href="profile1.html">Profile</a></li>
+                <li><a href="gallery1.html">Gallery</a></li>
+                <li><a href="about1.html">About</a></li>
+                
+            </ul>
+        </aside>
+        <main>
+            <h2>About GarinFarm</h2>
+            <p>GarinFarm is located in Barangay Huna, San Joaquin, Iloilo, Philippines. It was established to promote agricultural tourism in the province. The farm spans 14 hectares and is divided into different sections including the farm animals, the plantation, and the famous "Journey to Heaven" monument.</p>
+
+            <h3>A Unique Three-in-One Destination</h3>
+            <p>What sets GarinFarm apart is its unique identity as an integrated site that seamlessly combines agriculture, leisure, and spirituality. Owned by the Garin family, the property was developed to offer visitors a space for both recreation and reflection. It functions as a working farm where guests can observe agricultural practices, a resort with various outdoor activities, and a pilgrimage site that draws visitors seeking a moment of peace and contemplation.</p>
+
+            <h3>The Journey to Heaven</h3>
+            <p>The centerpiece of GarinFarm is the Pilgrimage Hill, often referred to as the "Stairway to Heaven" or "A Journey from Creation to Ascension". Visitors embark on a climb of approximately 480 steps, a path that is lined with life-sized dioramas and statues depicting significant biblical events, from the story of Creation and Noah's Ark to the Life, Passion, and Resurrection of Jesus Christ.</p>
+            <p>The climb culminates at the foot of a towering Divine Mercy Cross. To complete the experience, visitors pass through a dark Meditation Tunnel—symbolizing earthly struggles—before emerging into a blindingly white, ethereal space that depicts Heaven, complete with statues of angels and saints. This dramatic transition is designed to evoke a sense of spiritual renewal and awe.</p>
+
+            <h3>Recreation and Leisure</h3>
+            <p>Beyond its spiritual draws, GarinFarm offers a variety of activities for families and adventure seekers. The expansive grounds include a hilltop swimming pool, a large lagoon for boating and kayaking, and a 300-meter zipline that offers a thrilling ride over the water. Visitors can also enjoy horseback riding, fishing, or simply exploring the lush gardens and observing the farm animals, which include goats, ducks, and rabbits.</p>
+
+            <h3>Visitor Information</h3>
+            <ul>
+                <li><strong>Location:</strong> Barangay Huna, San Joaquin, Iloilo, Philippines.</li>
+                <li><strong>Entrance Fee:</strong> Approximately PHP 150 per person.</li>
+                <li><strong>Activities:</strong> Some activities have separate fees (e.g., Zipline, Swimming Pool, Boating).</li>
+                <li><strong>Best Time to Visit:</strong> The site is popular during Holy Week for pilgrimage, but it is open year-round. Early mornings are recommended to avoid the heat and crowds during the climb.</li>
+                <li><strong>Tips:</strong> Bring an umbrella, water, and wear comfortable shoes, as the climb can be steep and hot.</li>
+            </ul>
+        </main>
+    </div>
+    <footer>
+        <p>© 2026 GarinFarm, San Joaquin, Iloilo. All rights reserved. <span style="opacity:0.8;">✨ about experience ✨</span></p>
+    </footer>
+</body>
+</html>
